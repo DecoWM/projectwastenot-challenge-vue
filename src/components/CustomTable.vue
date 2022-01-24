@@ -24,7 +24,7 @@
           <!--b-form-input
             type="text"
             v-model="data.item.stock"
-            v-mask="currencyMasks[data.item.index]"
+            v-mask="numericMasks[data.item.index]"
             v-on:input="stockChange($event, data.item.index)"
           /-->
           <b-form-input
@@ -48,7 +48,7 @@ export default {
   data: () => ({
     dataItems: null,
     stockSubjects: [],
-    currencyMasks: [],
+    numericMasks: [],
     fields: [
       {
         key: "code",
@@ -118,7 +118,7 @@ export default {
             this.$store.dispatch("setInventoryStock", { stock: newStock, index: item.index });
           });
         // Mask not working properly (ex. 2,344,322)
-        /*this.currencyMasks[item.index] = (value) => {
+        /*this.numericMasks[item.index] = (value) => {
           console.log(value, item.index);
           const mask = createNumberMask({
             prefix: "",
