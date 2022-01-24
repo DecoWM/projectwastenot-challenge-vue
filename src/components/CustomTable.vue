@@ -20,7 +20,7 @@
     <b-table class="mt-4" hover head-variant="light" :items="items" :fields="fields">
       <template #cell(editStock)="data">
         <b-input-group prepend="Qty">
-          <!-- Mask not working -->
+          <!-- Mask not working properly (ex. 2,344,322) -->
           <!--b-form-input
             type="text"
             v-model="data.item.stock"
@@ -41,7 +41,7 @@
 <script>
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
-import createNumberMask from "text-mask-addons/dist/createNumberMask";
+//import createNumberMask from "text-mask-addons/dist/createNumberMask";
 
 export default {
   name: "CustomTable",
@@ -117,8 +117,8 @@ export default {
           .subscribe((newStock) => {
             this.$store.dispatch("setInventoryStock", { stock: newStock, index: item.index });
           });
-        // Mask not working
-        this.currencyMasks[item.index] = (value) => {
+        // Mask not working properly (ex. 2,344,322)
+        /*this.currencyMasks[item.index] = (value) => {
           console.log(value, item.index);
           const mask = createNumberMask({
             prefix: "",
@@ -127,7 +127,7 @@ export default {
             allowNegative: false,
           });
           return mask(value);
-        }
+        }*/
       });
     },
     stockChange(newStock, index) {
