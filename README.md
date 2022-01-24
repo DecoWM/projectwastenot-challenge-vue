@@ -1,4 +1,4 @@
-# projectwastenot-challenge
+# projectwastenot-challenge-vue
 
 ## Project setup
 ```
