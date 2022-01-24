@@ -48,8 +48,6 @@ export default new Vuex.Store({
   },
   actions: {
     setInventoryStock({ commit, state }, { stock, index }) {
-      //console.log(state.inventory.items[index].stock);
-      //console.log(stock);
       if (state.inventory.items[index].stock !== stock)
         commit("setInventoryStock", { stock, index });
     },

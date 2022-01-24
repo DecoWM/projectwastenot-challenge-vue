@@ -1,6 +1,6 @@
 <template>
   <b-container class="mt-2 px-4" fluid>
-    <h1 class="mb-4">Inventario</h1>
+    <h1 class="mb-4">Inventory</h1>
     <b-row>
       <b-col cols="3">
         <b-input-group>
@@ -132,6 +132,7 @@ export default {
     },
     stockChange(newStock, index) {
       this.stockSubjects[index].next(
+        // This transformation was designed with masking in mind
         parseFloat(newStock.replaceAll(",", "")).toString()
       );
     },
